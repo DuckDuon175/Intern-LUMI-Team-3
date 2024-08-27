@@ -282,6 +282,10 @@ void DeviceStateMachine(uint8_t event) {
 		//Bai 4
 		case EVENT_OF_BUTTON_1_HOLD_1S:
 		{
+			if(idTimerScan != NO_TIMER) {
+		        TimerStop(idTimerScan);
+		        idTimerScan = NO_TIMER;
+		    }
 			idTimerScan = TimerStart("IncreaseBrightness", \
 			                         200, \
 									 TIMER_REPEAT_FOREVER, \
@@ -290,6 +294,11 @@ void DeviceStateMachine(uint8_t event) {
 		}	break;
 		case EVENT_OF_BUTTON_5_HOLD_1S:
 		{
+			if (idTimerScan != NO_TIMER)
+			{
+				TimerStop(idTimerScan);
+				idTimerScan = NO_TIMER;
+			}
 			idTimerScan = TimerStart("DecreaseBrightness", \
 									 200, \
 									 TIMER_REPEAT_FOREVER, \
